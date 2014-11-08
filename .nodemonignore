@@ -1,0 +1,12 @@
+# ignore .git chages
+./.git/*
+
+# ignore npm packages
+./node_modules/*
+
+# ignore build & deployment
+./build/*
+./dist/*
+
+# ignore tests
+./test/*
