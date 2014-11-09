@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         reporter: 'spec'
       },
       unit: {
-        src: ['test/specs/*.js']
+        src: ['test/specs/**/*.js']
       },
       integration: {
         src: ['test/integration/*.js']

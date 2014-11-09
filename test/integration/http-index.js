@@ -15,14 +15,14 @@ describe('when requesting index', function () {
 
   it('will return links in response', function (done) {
     request(url)
-      .get('/flights')
+      .get('/v1/flights')
       .set('Accept', 'application/json')
       .expect(200)
       .end(function (err, res) {
         if (err) throw err;
 
-        expect(res.body.links.flights.arrivals.href).to.be(util.format('%s/flights/arrivals', url));
-        expect(res.body.links.flights.departures.href).to.be(util.format('%s/flights/departures', url));
+        expect(res.body.links.flights.arrivals.href).to.be(util.format('%s/v1/flights/arrivals', url));
+        expect(res.body.links.flights.departures.href).to.be(util.format('%s/v1/flights/departures', url));
 
         done();
       });

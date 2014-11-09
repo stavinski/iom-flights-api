@@ -4,7 +4,7 @@ var expect = require('expect.js'),
     _ = require('lodash'),
     formatter = require('../../lib/formatter');
 
-describe('formatting flights data', function () {
+describe('when formatting flights data', function () {
 
   var dataFeed = {
     bad: '<FLIGHTS><UPDATED_AT>08 Nov 2014 21:55</UPDATED_AT>',
