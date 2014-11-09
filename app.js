@@ -1,15 +1,13 @@
 'use strict';
 
-var http = require('http'),
-    cfg = require('./cfg');
+var express = require('express'),
+    app = express(),
+    routes = require('./lib/routes');
 
-function handler(req, res) {
-  res.writeHead(200, {
-    'Content-Type': 'text/plain'
-  });
-  res.end('Here\'s Johnny!');
-}
+// load globals
+require('./lib/globals');
 
-var app = http.createServer(handler);
+// setup routes
+routes(app);
 
-app.listen(cfg('PORT'));
+app.listen(conf('PORT'));

@@ -1,4 +1,5 @@
 {
+  "HOST": "http://localhost",
   "PORT": 3000,
   "FEED_ARRIVALS": "http://www2.iom-airport.com/arrivals.xml",
   "FEED_DEPARTURES": "http://www2.iom-airport.com/departures.xml"

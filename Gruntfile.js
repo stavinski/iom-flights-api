@@ -38,7 +38,12 @@ module.exports = function (grunt) {
       options: {
         reporter: 'spec'
       },
-      src: ['test/specs/*.js']
+      unit: {
+        src: ['test/specs/*.js']
+      },
+      integration: {
+        src: ['test/integration/*.js']
+      }
     }
   });
 
@@ -46,7 +51,7 @@ module.exports = function (grunt) {
   loadTasks(grunt);
 
   grunt.registerTask('build:debug', ['jshint:build']);
-  grunt.registerTask('server:debug', ['jshint:server', 'mochaTest']);
+  grunt.registerTask('server:debug', ['jshint:server', 'mochaTest:unit', 'mochaTest:integration']);
 
   grunt.registerTask('debug', ['build:debug', 'server:debug']);
 

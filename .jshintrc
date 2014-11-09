@@ -5,6 +5,9 @@
   "globals": {
     "describe": true,
     "it": true,
-    "expect": true
+    "expect": true,
+    "conf": true,
+    "beforeEach": true,
+    "afterEach": true
   }
 }
