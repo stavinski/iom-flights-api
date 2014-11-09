@@ -4,7 +4,7 @@ var timeGrunt = require('time-grunt'),
     loadTasks = require('load-grunt-tasks');
 
 var jspaths = {
-  server: ['app.js', 'test/**/*.js', '!node_modules/**/*.js', '!build/**/*.js', '!dist/**/*.js'],
+  server: ['app.js', 'test/**/*.js', 'lib/**/*.js', '!node_modules/**/*.js', '!build/**/*.js', '!dist/**/*.js'],
   build: ['Gruntfile.js']
 };
 
@@ -27,12 +27,18 @@ module.exports = function (grunt) {
     watch: {
       server: {
         files: jspaths.server,
-        tasks: ['jshint:server']
+        tasks: ['server:debug']
       },
       build: {
         files: jspaths.build,
-        tasks: ['jshint:build']
+        tasks: ['build:debug']
       }
+    },
+    mochaTest: {
+      options: {
+        reporter: 'spec'
+      },
+      src: ['test/specs/*.js']
     }
   });
 
@@ -40,7 +46,7 @@ module.exports = function (grunt) {
   loadTasks(grunt);
 
   grunt.registerTask('build:debug', ['jshint:build']);
-  grunt.registerTask('server:debug', ['jshint:server']);
+  grunt.registerTask('server:debug', ['jshint:server', 'mochaTest']);
 
   grunt.registerTask('debug', ['build:debug', 'server:debug']);
 

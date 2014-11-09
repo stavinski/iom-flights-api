@@ -41,7 +41,7 @@ JSON Response:
       "fullname": "Birmingham"
     },
     "airline": {
-      "code": "BE195",
+      "code": "BE",
       "name": "Flybe"
     },
     "scheduled": "2014-11-08T12:20",

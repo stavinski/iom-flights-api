@@ -1,4 +1,10 @@
 {
   "node": true,
-  "strict": true
+  "strict": true,
+  "predef": [ "-Promise" ],
+  "globals": {
+    "describe": true,
+    "it": true,
+    "expect": true
+  }
 }
