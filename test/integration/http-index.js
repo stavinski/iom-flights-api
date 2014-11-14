@@ -9,7 +9,7 @@ describe('when requesting index', function () {
 
   beforeEach(function () {
     // load the globals
-    require('../../lib/globals');
+    require('../../globals');
     url = util.format('%s:%d', conf('HOST'), conf('PORT'));
   });
 

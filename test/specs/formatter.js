@@ -1,8 +1,11 @@
 'use strict';
 
+//load globals
+require('../../globals');
+
 var expect = require('expect.js'),
     _ = require('lodash'),
-    formatter = require('../../lib/formatter');
+    formatter = libRequire('formatter');
 
 describe('when formatting flights data', function () {
 

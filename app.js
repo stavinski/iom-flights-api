@@ -1,12 +1,12 @@
 'use strict';
 
+// load globals
+require('./globals');
+
 var express = require('express'),
     app = express(),
     routerV1 = express.Router(),
-    routes = require('./lib/routes');
-
-// load globals
-require('./lib/globals');
+    routes = libRequire('routes');
 
 // setup routes based off version
 routes.v1(routerV1);

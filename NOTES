@@ -2,7 +2,7 @@ Will require the following separate responsibilities to be carried out:
 
  * hosting a HTTP server to handle requests (express)
  * retrieving data from XML feed (request)
- * converting XML data to JSON (xmltojs)
+ * converting XML data to JSON (xml2js)
  * formatting & manipulating flight data into desired format
  * returning content in supported format [see jsonapi.org]
  * caching data against etag to prevent unnecessary data exchange (memory-cache)

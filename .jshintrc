@@ -8,6 +8,8 @@
     "expect": true,
     "conf": true,
     "beforeEach": true,
-    "afterEach": true
+    "afterEach": true,
+    "libRequire": true,
+    "rootRequire": true
   }
 }

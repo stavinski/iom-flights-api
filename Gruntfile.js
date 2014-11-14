@@ -4,7 +4,7 @@ var timeGrunt = require('time-grunt'),
     loadTasks = require('load-grunt-tasks');
 
 var jspaths = {
-  server: ['app.js', 'test/**/*.js', 'lib/**/*.js', '!node_modules/**/*.js', '!build/**/*.js', '!dist/**/*.js'],
+  server: ['app.js', 'globals.js', 'test/**/*.js', 'lib/**/*.js', '!node_modules/**/*.js', '!build/**/*.js', '!dist/**/*.js'],
   build: ['Gruntfile.js']
 };
 

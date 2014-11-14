@@ -1,16 +1,19 @@
 'use strict';
 
+//load globals
+require('../../../globals');
+
 var sinon = require('sinon'),
     util = require('util'),
     expect = require('expect.js'),
-    sut = require('../../../lib/controllers/flights');
+    sut = libRequire('controllers/flights');
 
 describe('when retrieving flight links', function () {
   var req = { protocol: 'http', get: function () { return 'localhost:3000'; } },
       res = { send: sinon.spy() };
 
   it('will set the correct response', function () {
-    sut.flights(req, res);
+    sut.index(req, res);
 
     expect(res.send.calledWith({
       links: {
