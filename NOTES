@@ -25,8 +25,8 @@ airport.name - filter on the airport the flight is traveling to/from i.e. Manche
 Unfortunately the status provided is just a free string i.e. 'Go To Departures' rather than structured so makes
 it tricky to add status filtering but I may see if doing some regexes might yield some results.
 
-The times supplied are local UK time and not UTC, if the island starts having regular flights from other
-timezones this could be an issue.
+Occasionally there are flights to/from countries that cross timezones therefore I have included both the local
+time and also the converted UTC time if needed.
 
 You can use the Last-Modified header to determine when the data was last updated.
 
@@ -44,9 +44,18 @@ JSON Response:
       "code": "BE",
       "name": "Flybe"
     },
-    "scheduled": "2014-11-08T12:20",
-    "expected": "2014-11-08T12:40",
-    "actual": "2014-11-08T12:30",
+    "scheduled": {
+      "local": "2014-11-08T12:20",
+      "utc": "2014-11-08T12:20"
+    },
+    "expected": {
+      "local": "2014-11-08T12:40",
+      "utc": "2014-11-08T12:40"
+    },
+    "actual": {
+      "local": "2014-11-08T12:30",
+      "utc": "2014-11-08T12:30"
+    },
     "status": "Boarding Gate 4"
   }]
 }
