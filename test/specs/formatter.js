@@ -40,6 +40,8 @@ describe('when formatting flights data', function () {
       expect(flight.airline).to.have.property('code');
       expect(flight.airline).to.have.property('name');
       expect(flight).to.have.property('scheduled');
+      expect(flight.scheduled).to.have.property('local');
+      expect(flight.scheduled).to.have.property('utc');
       done();
     });
   });
@@ -58,7 +60,10 @@ describe('when formatting flights data', function () {
           code: 'BE',
           name: 'Flybe'
         },
-        scheduled: '09 Nov 2014 10:45'
+        scheduled: {
+          local: '2014-11-09T10:45:00',
+          utc: '2014-11-09T10:45:00.000Z'
+        }
       });
       done();
     });
