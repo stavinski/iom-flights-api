@@ -14,21 +14,21 @@ describe('when formatting flights data', function () {
     good: '<FLIGHTS><UPDATED_AT>09 Nov 2014 10:03</UPDATED_AT><FLIGHT><FLT>BE811</FLT><PORT>Manchester</PORT><VIA1/><VIA2/><FULL_PORT>Manchester</FULL_PORT><AIRLINE_CODE>BE</AIRLINE_CODE><AIRLINE_NAME>Flybe</AIRLINE_NAME><SCHED_DATETIME>09 Nov 2014 10:45</SCHED_DATETIME><SCHED_TIME>10:45</SCHED_TIME><EXPECTED_DATETIME/><EXPECTED_TIME/><ACTUAL_DATETIME/><ACTUAL_TIME/><STATUS/><_order>11/9/2014 10:45:00 AM</_order></FLIGHT></FLIGHTS>'
   };
 
-  it('will handle when xml is incomplete', function (done) {
+  it('should handle when xml is incomplete', function (done) {
     formatter.flights(dataFeed.bad).done(function (flights) {
       expect(flights).to.be.empty();
       done();
     });
   });
 
-  it('will have the correct number of elements', function (done) {
+  it('should have the correct number of elements', function (done) {
     formatter.flights(dataFeed.good).done(function (flights) {
       expect(flights).to.have.length(1);
       done();
     });
   });
 
-  it('will have the correct structure', function (done) {
+  it('should have the correct structure', function (done) {
     formatter.flights(dataFeed.good).done(function (flights) {
       var flight = _.first(flights);
       expect(flight).to.have.property('id');
@@ -46,7 +46,7 @@ describe('when formatting flights data', function () {
     });
   });
 
-  it('will have the correct values', function (done) {
+  it('should have the correct values', function (done) {
     formatter.flights(dataFeed.good).done(function (flights) {
       var flight = _.first(flights);
       expect(flight).to.eql({

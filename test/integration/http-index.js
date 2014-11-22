@@ -13,7 +13,7 @@ describe('when requesting index', function () {
     url = util.format('%s:%d', conf('HOST'), conf('PORT'));
   });
 
-  it('will return links in response', function (done) {
+  it('should return links in response', function (done) {
     request(url)
       .get('/v1/flights')
       .set('Accept', 'application/json')
