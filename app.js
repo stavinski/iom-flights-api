@@ -12,4 +12,6 @@ var express = require('express'),
 routes.v1(routerV1);
 app.use('/v1', routerV1);
 
+app.set('etag', false);
+
 app.listen(conf('PORT'));
