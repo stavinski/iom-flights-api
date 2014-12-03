@@ -29,6 +29,11 @@ app.use('/v1', routerV1);
 if (process.env.NODE_ENV === 'development') {
   // only use in development
   app.use(errorhandler());
+} else {
+  app.use(function (err, req, res, next) {
+    logger.error('error raised', err);
+    res.sendStatus(500);
+  });
 }
 
 app.listen(conf('PORT'), function () {
