@@ -10,6 +10,7 @@
     "beforeEach": true,
     "afterEach": true,
     "libRequire": true,
-    "rootRequire": true
+    "rootRequire": true,
+    "logger": true
   }
 }

@@ -1,12 +1,13 @@
 'use strict';
 
-var _ = require('lodash');
+var R = require('ramda');
 
 function _require(root, path) {
   return require(root + '/' + path);
 }
 
-global.conf = require('./cfg');
+global.rootRequire = R.lPartial(_require, __dirname);
+global.libRequire = R.lPartial(_require, __dirname + '/lib');
 
-global.rootRequire = _.partial(_require, __dirname);
-global.libRequire = _.partial(_require, __dirname + '/lib');
+global.conf = require('./cfg');
+global.logger = libRequire('logger');

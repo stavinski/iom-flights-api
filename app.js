@@ -6,7 +6,7 @@ require('./globals');
 var express = require('express'),
     app = express(),
     cors = require('cors'),
-    logger = require('morgan'),
+    expressLogger = require('morgan'),
     errorhandler = require('errorhandler'),
     routerV1 = express.Router(),
     routes = libRequire('routes');
@@ -19,7 +19,7 @@ app.set('port', conf('PORT'));
 app.use(cors());
 
 // log requests
-app.use(logger('dev'));
+app.use(expressLogger('dev'));
 
 // setup routes based off version
 routes.v1(routerV1);
@@ -32,5 +32,5 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.listen(conf('PORT'), function () {
-  console.log('flights api listening on port: ' + app.get('port'));
+  logger.info('flights api listening on port: ' + app.get('port'));
 });
