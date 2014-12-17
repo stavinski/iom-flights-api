@@ -15,22 +15,31 @@ describe('when formatting flights data', function () {
   };
 
   it('should handle when xml is incomplete', function (done) {
-    formatter.flights(dataFeed.bad).done(function (flights) {
-      expect(flights).to.be.empty();
+    formatter.flights(dataFeed.bad).done(function (response) {
+      expect(response.success).to.not.be.ok();
+      done();
+    });
+  });
+
+  it('should handle when xml is complete', function (done) {
+    formatter.flights(dataFeed.good).done(function (response) {
+      expect(response.success).to.be.ok();
       done();
     });
   });
 
   it('should have the correct number of elements', function (done) {
-    formatter.flights(dataFeed.good).done(function (flights) {
-      expect(flights).to.have.length(1);
+    formatter.flights(dataFeed.good).done(function (response) {
+      expect(response.flights).to.have.length(1);
       done();
     });
   });
 
   it('should have the correct structure', function (done) {
-    formatter.flights(dataFeed.good).done(function (flights) {
-      var flight = _.first(flights);
+    formatter.flights(dataFeed.good).done(function (response) {
+      expect(response).to.have.property('updated');
+
+      var flight = _.first(response.flights);
       expect(flight).to.have.property('id');
       expect(flight).to.have.property('type');
       expect(flight).to.have.property('airport');
@@ -47,8 +56,12 @@ describe('when formatting flights data', function () {
   });
 
   it('should have the correct values', function (done) {
-    formatter.flights(dataFeed.good).done(function (flights) {
-      var flight = _.first(flights);
+    formatter.flights(dataFeed.good).done(function (response) {
+      var updated = response.updated;
+
+      expect(updated).to.eql(new Date('09 Nov 2014 10:03'));
+
+      var flight = _.first(response.flights);
       expect(flight).to.eql({
         id: 'BE811',
         type: 'flight',

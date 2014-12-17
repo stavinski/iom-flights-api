@@ -83,6 +83,7 @@ There are 2 optional query parameters that can be supplied in order to filter th
 
 Object | Property | Description
 --- | --- | ---
+root | updated | The utc date & time of when the arrivals flight data was updated from the data feed
 root | flights | An array of flights that match the supplied request
 flight | id | The id of the flight this is the flight code
 flight | type | Reference type of this resource (always flight)
@@ -102,6 +103,7 @@ flight | status | The current status of the flight
 
 ```json
 {
+  "updated": "2014-11-26T19:30:00.000Z",
   "flights":[{
     "id":"EZY855",
     "type":"flight",
@@ -149,6 +151,7 @@ There are 2 optional query parameters that can be supplied in order to filter th
 
 Object | Property | Description
 --- | --- | ---
+root | updated | The utc date & time of when the departures flight data was updated from the data feed
 root | flights | An array of flights that match the supplied request
 flight | id | The id of the flight this is the flight code
 flight | type | Reference type of this resource (always flight)
@@ -168,6 +171,7 @@ flight | status | The current status of the flight
 
 ```json
 {
+  "updated": "2014-11-26T19:30:00.000Z",
   "flights":[{
     "id":"EZY855",
     "type":"flight",

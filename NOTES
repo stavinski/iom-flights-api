@@ -28,11 +28,10 @@ it tricky to add status filtering but I may see if doing some regexes might yiel
 Occasionally there are flights to/from countries that cross timezones therefore I have included both the local
 time and also the converted UTC time if needed.
 
-You can use the Last-Modified header to determine when the data was last updated.
-
 JSON Response:
 
 {
+  "updated": 2014-12-17T18:58:00.000Z",
   "flights": [{
     "id": "BE195",
     "type": "flight",
@@ -46,15 +45,15 @@ JSON Response:
     },
     "scheduled": {
       "local": "2014-11-08T12:20",
-      "utc": "2014-11-08T12:20"
+      "utc": "2014-11-08T12:20Z"
     },
     "expected": {
       "local": "2014-11-08T12:40",
-      "utc": "2014-11-08T12:40"
+      "utc": "2014-11-08T12:40Z"
     },
     "actual": {
       "local": "2014-11-08T12:30",
-      "utc": "2014-11-08T12:30"
+      "utc": "2014-11-08T12:30Z"
     },
     "status": "Boarding Gate 4"
   }]
