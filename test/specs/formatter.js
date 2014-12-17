@@ -17,6 +17,7 @@ describe('when formatting flights data', function () {
   it('should handle when xml is incomplete', function (done) {
     formatter.flights(dataFeed.bad).done(function (response) {
       expect(response.success).to.not.be.ok();
+      expect(response.flights).to.be.empty();
       done();
     });
   });
