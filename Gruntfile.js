@@ -27,11 +27,11 @@ module.exports = function (grunt) {
     watch: {
       server: {
         files: jspaths.server,
-        tasks: ['server:debug']
+        tasks: ['server:dev']
       },
       build: {
         files: jspaths.build,
-        tasks: ['build:debug']
+        tasks: ['build:dev']
       }
     },
     mochaTest: {
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
       unit: {
         src: ['test/specs/**/*.js']
       },
-      integration: {
+      release: {
         src: ['test/integration/*.js']
       }
     }
@@ -50,10 +50,12 @@ module.exports = function (grunt) {
   // load tasks
   loadTasks(grunt);
 
-  grunt.registerTask('build:debug', ['jshint:build']);
-  grunt.registerTask('server:debug', ['jshint:server', 'mochaTest:unit', 'mochaTest:integration']);
+  grunt.registerTask('build:dev', ['jshint:build']);
+  grunt.registerTask('server:dev', ['jshint:server', 'mochaTest:unit']);
+  grunt.registerTask('server:release', ['mochaTest:release']);
 
-  grunt.registerTask('debug', ['build:debug', 'server:debug']);
+  grunt.registerTask('dev', ['build:dev', 'server:dev']);
+  grunt.registerTask('release', ['dev', 'server:release']);
 
-  grunt.registerTask('default', ['debug', 'watch']);
+  grunt.registerTask('default', ['dev', 'watch']);
 };
