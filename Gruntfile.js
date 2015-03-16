@@ -5,7 +5,7 @@ var timeGrunt = require('time-grunt'),
 
 var jspaths = {
   server: ['app.js', 'globals.js', 'test/**/*.js', 'lib/**/*.js', '!node_modules/**/*.js', '!build/**/*.js', '!dist/**/*.js'],
-  build: ['Gruntfile.js']
+  support: ['Gruntfile.js']
 };
 
 module.exports = function (grunt) {
@@ -22,23 +22,23 @@ module.exports = function (grunt) {
         jshintrc: true
       },
       server: jspaths.server,
-      build: jspaths.build
+      support: jspaths.support
     },
     watch: {
       server: {
         files: jspaths.server,
-        tasks: ['server:dev']
+        tasks: ['server:debug']
       },
-      build: {
-        files: jspaths.build,
-        tasks: ['build:dev']
+      support: {
+        files: jspaths.support,
+        tasks: ['support:debug']
       }
     },
     mochaTest: {
       options: {
         reporter: 'spec'
       },
-      unit: {
+      debug: {
         src: ['test/specs/**/*.js']
       },
       release: {
@@ -50,12 +50,12 @@ module.exports = function (grunt) {
   // load tasks
   loadTasks(grunt);
 
-  grunt.registerTask('build:dev', ['jshint:build']);
-  grunt.registerTask('server:dev', ['jshint:server', 'mochaTest:unit']);
+  grunt.registerTask('support:debug', ['jshint:support']);
+  grunt.registerTask('server:debug', ['jshint:server', 'mochaTest:debug']);
   grunt.registerTask('server:release', ['mochaTest:release']);
 
-  grunt.registerTask('dev', ['build:dev', 'server:dev']);
-  grunt.registerTask('release', ['dev', 'server:release']);
+  grunt.registerTask('debug', 'runs debug tasks and watches for changes', ['support:debug', 'server:debug']);
+  grunt.registerTask('release', 'runs release tasks ready for release', ['debug', 'server:release']);
 
-  grunt.registerTask('default', ['dev', 'watch']);
+  grunt.registerTask('default', 'runs debug tasks', ['debug', 'watch']);
 };
