@@ -14,6 +14,8 @@ module.exports = function (grunt) {
   timeGrunt(grunt);
 
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+
     clean: {
       build: ['build']
     },
@@ -44,6 +46,18 @@ module.exports = function (grunt) {
       release: {
         src: ['test/integration/*.js']
       }
+    },
+    bump: {
+      options: {
+        updateConfigs: ['pkg'],
+        commitFiles: ['package.json', 'CHANGELOG.md']
+      }
+    },
+    changelog: {
+      options: {
+        editor: 'sublime -w',
+        github: pkg.repository.url
+      }
     }
   });
 
@@ -53,6 +67,8 @@ module.exports = function (grunt) {
   grunt.registerTask('support:debug', ['jshint:support']);
   grunt.registerTask('server:debug', ['jshint:server', 'mochaTest:debug']);
   grunt.registerTask('server:release', ['mochaTest:release']);
+
+  grunt.registerTask('notes', 'bumps version, updates changelog & commits to CVS', ['bump-only', 'changelog', 'bump-commit']);
 
   grunt.registerTask('debug', 'runs debug tasks and watches for changes', ['support:debug', 'server:debug']);
   grunt.registerTask('release', 'runs release tasks ready for release', ['debug', 'server:release']);
