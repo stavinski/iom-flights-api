@@ -66,13 +66,15 @@ module.exports = function (grunt) {
   grunt.registerTask('support:debug', ['jshint:support']);
   grunt.registerTask('server:debug', ['jshint:server', 'mochaTest:debug']);
   grunt.registerTask('server:release', ['mochaTest:release']);
-  
+
   grunt.registerTask('notes:minor', ['bump-only:minor', 'changelog', 'bump-commit']);
   grunt.registerTask('notes:major', ['bump-only:major', 'changelog', 'bump-commit']);
   grunt.registerTask('notes', ['bump-only', 'changelog', 'bump-commit']);
   
   grunt.registerTask('debug', ['support:debug', 'server:debug']);
   grunt.registerTask('release', ['debug', 'server:release']);
+
+  grunt.registerTask('heroku:production', ['release']);
 
   grunt.registerTask('default', ['debug', 'watch']);
 };
