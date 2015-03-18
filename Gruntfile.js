@@ -15,7 +15,6 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-
     clean: {
       build: ['build']
     },
@@ -50,13 +49,13 @@ module.exports = function (grunt) {
     bump: {
       options: {
         updateConfigs: ['pkg'],
-        commitFiles: ['package.json', 'CHANGELOG.md']
+        commitFiles: ['package.json', 'CHANGELOG.md'],
+        pushTo: 'origin'
       }
     },
     changelog: {
       options: {
-        editor: 'sublime -w',
-        github: pkg.repository.url
+        repository: '<%= pkg.repository.url %>'
       }
     }
   });
@@ -68,10 +67,10 @@ module.exports = function (grunt) {
   grunt.registerTask('server:debug', ['jshint:server', 'mochaTest:debug']);
   grunt.registerTask('server:release', ['mochaTest:release']);
 
-  grunt.registerTask('notes', 'bumps version, updates changelog & commits to CVS', ['bump-only', 'changelog', 'bump-commit']);
+  grunt.registerTask('notes', ['bump-only', 'changelog', 'bump-commit']);
 
-  grunt.registerTask('debug', 'runs debug tasks and watches for changes', ['support:debug', 'server:debug']);
-  grunt.registerTask('release', 'runs release tasks ready for release', ['debug', 'server:release']);
+  grunt.registerTask('debug', ['support:debug', 'server:debug']);
+  grunt.registerTask('release', ['debug', 'server:release']);
 
-  grunt.registerTask('default', 'runs debug tasks', ['debug', 'watch']);
+  grunt.registerTask('default', ['debug', 'watch']);
 };
