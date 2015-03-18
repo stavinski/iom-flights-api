@@ -74,7 +74,7 @@ module.exports = function (grunt) {
   grunt.registerTask('debug', ['support:debug', 'server:debug']);
   grunt.registerTask('release', ['debug', 'server:release']);
 
-  grunt.registerTask('heroku:production', ['release']);
+  grunt.registerTask('heroku:production', ['debug']);
 
   grunt.registerTask('default', ['debug', 'watch']);
 };
