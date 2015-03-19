@@ -10,7 +10,7 @@ describe('when requesting index', function () {
   beforeEach(function () {
     // load the globals
     require('../../globals');
-    url = util.format('%s:%d', conf('HOST'), conf('PORT'));
+    url = util.format('%s', conf('HOST'));
   });
 
   it('should return links in response', function (done) {

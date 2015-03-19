@@ -1,5 +1,7 @@
 #REST IOM Flights Web Service Interface
 
+[![Build Status](https://travis-ci.org/stavinski/iom-flights-api.svg?branch=master)](https://travis-ci.org/stavinski/iom-flights-api)
+
 This is a REST based web API to query flight details for the Isle of Man airport (Ronaldsway) it runs on [nodejs](http://www.nodejs.org) and there is currently an up to date publicly available hosted version running on [heroku](http://wwww.heroku.com) and can be found here [http://iom-flights.herokuapp.com/v1/flights].
 
 The aim was to wrap the existing data feed and to transform it into a standard REST web service interface this should make it easier for clients to consume the exposed flight data, you can either use the existing publicly hosted version or just clone the code and host it wherever you like.
