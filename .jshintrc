@@ -1,14 +1,11 @@
 {
   "node": true,
   "strict": true,
+  "mocha": true,
   "predef": [ "-Promise" ],
   "globals": {
-    "describe": true,
-    "it": true,
     "expect": true,
     "conf": true,
-    "beforeEach": true,
-    "afterEach": true,
     "libRequire": true,
     "rootRequire": true,
     "logger": true
