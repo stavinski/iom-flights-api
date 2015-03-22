@@ -17,13 +17,7 @@ Flights
 Arrivals: GET ~/v1/flights/arrivals
 Departures: GET ~/v1/flights/departures
 
-Optional query parameters:
-
-airline.code - filter on the airline i.e. BE
-airport.name - filter on the airport the flight is traveling to/from i.e. Manchester
-
 Unfortunately the status provided is just a free string i.e. 'Go To Departures' rather than structured so makes
-it tricky to add status filtering but I may see if doing some regexes might yield some results.
 
 Occasionally there are flights to/from countries that cross timezones therefore I have included both the local
 time and also the converted UTC time if needed.
