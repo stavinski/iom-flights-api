@@ -74,13 +74,6 @@ Returns the flight arrivals to the Isle of Man airport.
 
 `http://iom-flights.herokuapp.com/v1/flights/arrivals`
 
-#### Query Parameters
-
-There are 2 optional query parameters that can be supplied in order to filter the flights returned:
-
-* __airline.code__: Restricts to flights that belong to the supplied airline code _e.g. BE_
-* __airport.name__: Restricts to flights that originated from the supplied airport name _e.g. Manchester_
-
 #### Resource Properties
 
 Object | Property | Description
@@ -141,13 +134,6 @@ Returns the flight departures from the Isle of Man airport.
 #### Resource URI
 
 `http://iom-flights.herokuapp.com/v1/flights/departures`
-
-#### Query Parameters
-
-There are 2 optional query parameters that can be supplied in order to filter the flights returned:
-
-* __airline.code__: Restricts to flights that belong to the supplied airline code _e.g. BE_
-* __airport.name__: Restricts to flights that are destined to the supplied airport name _e.g. Manchester_
 
 #### Resource Properties
 
