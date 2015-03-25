@@ -18,7 +18,7 @@ The IOM Flights REST API at present runs only on HTTP this is mainly because all
 
 ## Caching Support
 
-In order to reduce the traffic being sent between the client and the IOM Flights REST API you can use the [If-None-Match](http://en.wikipedia.org/wiki/HTTP_ETag) and [If-Modified-Since](http://en.wikipedia.org/wiki/List_of_HTTP_header_fields) HTTP headers, behind the scenes it using the values from the source data feed which also supports these headers.
+In order to reduce the traffic being sent between the client and the IOM Flights REST API you can use the [If-None-Match](http://en.wikipedia.org/wiki/HTTP_ETag) HTTP header, behind the scenes it using the values from the source data feed which also supports this header.
 
 The IOM Flights REST API keeps a cached copy of the flights in memory but will always make a request to the source to see if it is using the newest version.
 

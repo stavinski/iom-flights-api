@@ -5,7 +5,7 @@ Will require the following separate responsibilities to be carried out:
  * converting XML data to JSON (xml2js)
  * formatting & manipulating flight data into desired format
  * returning content in supported format [see jsonapi.org]
- * caching data against etag to prevent unnecessary data exchange (memory-cache)
+ * caching data against etag to prevent unnecessary data exchange (in memory cache)
 
 REST URIs:
 
@@ -64,5 +64,5 @@ information to inform the client to use them to reduce data traffic:
 
 GET ~/v1/caching
 
-The IOM Flights API supports using the If-None-Match & If-Modified-Since caching request headers, by using these
+The IOM Flights API supports using the If-None-Match caching request headers, by using these
 headers you can reduce traffic being sent unnecessarily when data has not changed.

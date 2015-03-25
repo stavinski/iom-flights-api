@@ -4,6 +4,7 @@
   "strict": true,
   "mocha": true,
   "predef": [ "-Promise" ],
+  "validthis": true,
   "globals": {
     "expect": true,
     "conf": true,
