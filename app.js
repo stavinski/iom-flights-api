@@ -8,10 +8,17 @@ var util = require('util'),
     koalogger = require('koa-logger'),
     router = require('koa-router')(),
     cors = require('koa-cors'),
-    jsonp = require('koa-jsonp'),
-    caching = require('./lib/controllers/caching');
+    jsonp = require('koa-jsonp');
 
-router.get('/v1/caching', caching);
+// controllers
+var caching = libRequire('controllers/caching'),
+    flights = libRequire('controllers/flights')({});
+
+router.get('/v1/caching', caching.index);
+
+router.get('/v1/flights', flights.index)
+      .get('/v1/flights/arrivals', flights.arrivals)
+      .get('/v1/flights/departures', flights.departures);
 
 app.use(koalogger());
 app.use(cors());

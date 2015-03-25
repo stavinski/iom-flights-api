@@ -4,7 +4,7 @@ var util = require('util'),
     request = require('supertest'),
     expect = require('expect.js');
 
-describe('when requesting cache information', () => {
+describe('when requesting caching information', () => {
   var url;
 
   beforeEach(() => {
