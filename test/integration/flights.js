@@ -1,11 +1,11 @@
 'use strict';
 
-var util = require('util'),
+let util = require('util'),
     request = require('supertest'),
     expect = require('expect.js');
 
 describe('when retrieving flights', () => {
-  var url;
+  let url;
 
   beforeEach(() => {
     require('../../globals');

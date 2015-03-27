@@ -1,10 +1,10 @@
 'use strict';
 
-var co = require('co'),
+let co = require('co'),
     expect = require('expect.js');
 
 describe('when making request', () => {
-  var requester;
+  let requester;
 
   beforeEach(() => {
     require('../../globals');
@@ -14,7 +14,7 @@ describe('when making request', () => {
 
   it('should return correct response', (done) => {
     co(function* () {
-      var result = yield requester('http://www.google.com/');
+      let result = yield requester('http://www.google.com/');
       expect(result.status).to.be(200);
       done();
     });
