@@ -44,6 +44,10 @@ module.exports = function (grunt) {
         src: ['test/specs/**/*.js']
       },
       release: {
+        options: {
+          timeout: 3000,
+          slow: 3000
+        },
         src: ['test/integration/*.js']
       }
     },
