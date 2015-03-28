@@ -1,11 +1,10 @@
 Will require the following separate responsibilities to be carried out:
 
- * hosting a HTTP server to handle requests (express)
+ * hosting a HTTP server to handle requests (koa)
  * retrieving data from XML feed (request)
  * converting XML data to JSON (xml2js)
  * formatting & manipulating flight data into desired format
  * returning content in supported format [see jsonapi.org]
- * caching data against etag to prevent unnecessary data exchange (in memory cache)
 
 REST URIs:
 
@@ -16,8 +15,6 @@ Flights
 
 Arrivals: GET ~/v1/flights/arrivals
 Departures: GET ~/v1/flights/departures
-
-Unfortunately the status provided is just a free string i.e. 'Go To Departures' rather than structured so makes
 
 Occasionally there are flights to/from countries that cross timezones therefore I have included both the local
 time and also the converted UTC time if needed.
