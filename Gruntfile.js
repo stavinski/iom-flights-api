@@ -35,14 +35,19 @@ module.exports = function (grunt) {
         tasks: ['support:debug']
       }
     },
-    mochaTest: {
+    mochacli: {
       options: {
-        reporter: 'spec'
+        reporter: 'spec',
+        harmony: true
       },
       debug: {
         src: ['test/specs/**/*.js']
       },
       release: {
+        options: {
+          timeout: 5000,
+          slow: 5000
+        },
         src: ['test/integration/*.js']
       }
     },
@@ -64,13 +69,13 @@ module.exports = function (grunt) {
   loadTasks(grunt);
 
   grunt.registerTask('support:debug', ['jshint:support']);
-  grunt.registerTask('server:debug', ['jshint:server', 'mochaTest:debug']);
-  grunt.registerTask('server:release', ['mochaTest:release']);
+  grunt.registerTask('server:debug', ['jshint:server', 'mochacli:debug']);
+  grunt.registerTask('server:release', ['mochacli:release']);
 
   grunt.registerTask('notes:minor', ['bump-only:minor', 'changelog', 'bump-commit']);
   grunt.registerTask('notes:major', ['bump-only:major', 'changelog', 'bump-commit']);
   grunt.registerTask('notes', ['bump-only', 'changelog', 'bump-commit']);
-  
+
   grunt.registerTask('debug', ['support:debug', 'server:debug']);
   grunt.registerTask('release', ['debug', 'server:release']);
   grunt.registerTask('ci', ['release']);

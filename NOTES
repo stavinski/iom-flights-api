@@ -1,11 +1,10 @@
 Will require the following separate responsibilities to be carried out:
 
- * hosting a HTTP server to handle requests (express)
+ * hosting a HTTP server to handle requests (koa)
  * retrieving data from XML feed (request)
  * converting XML data to JSON (xml2js)
  * formatting & manipulating flight data into desired format
  * returning content in supported format [see jsonapi.org]
- * caching data against etag to prevent unnecessary data exchange (memory-cache)
 
 REST URIs:
 
@@ -16,14 +15,6 @@ Flights
 
 Arrivals: GET ~/v1/flights/arrivals
 Departures: GET ~/v1/flights/departures
-
-Optional query parameters:
-
-airline.code - filter on the airline i.e. BE
-airport.name - filter on the airport the flight is traveling to/from i.e. Manchester
-
-Unfortunately the status provided is just a free string i.e. 'Go To Departures' rather than structured so makes
-it tricky to add status filtering but I may see if doing some regexes might yield some results.
 
 Occasionally there are flights to/from countries that cross timezones therefore I have included both the local
 time and also the converted UTC time if needed.
@@ -70,5 +61,5 @@ information to inform the client to use them to reduce data traffic:
 
 GET ~/v1/caching
 
-The IOM Flights API supports using the If-None-Match & If-Modified-Since caching request headers, by using these
+The IOM Flights API supports using the If-None-Match caching request headers, by using these
 headers you can reduce traffic being sent unnecessarily when data has not changed.

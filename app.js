@@ -3,39 +3,31 @@
 // load globals
 require('./globals');
 
-var express = require('express'),
-    app = express(),
-    cors = require('cors'),
-    expressLogger = require('morgan'),
-    errorhandler = require('errorhandler'),
-    routerV1 = express.Router(),
-    routes = libRequire('routes');
+let util = require('util'),
+    app = require('koa')(),
+    koalogger = require('koa-logger'),
+    router = require('koa-router')(),
+    cors = require('koa-cors'),
+    jsonp = require('koa-jsonp');
 
-// we handle the caching based off the data feed
-app.set('etag', false);
-app.set('port', conf('PORT'));
+// middlewares
+let cachecheck = libRequire('cachecheck');
 
-// allow cross origin sharing
+// controllers
+let caching = libRequire('controllers/caching'),
+    flights = libRequire('controllers/flights');
+
+router.get('/v1/caching', caching.index);
+
+router.get('/v1/flights', flights.index)
+      .get('/v1/flights/arrivals', flights.arrivals, cachecheck)
+      .get('/v1/flights/departures', flights.departures, cachecheck);
+
+app.use(koalogger());
 app.use(cors());
+app.use(jsonp());
+app.use(router.routes());
 
-// log requests
-app.use(expressLogger('dev'));
+app.listen(conf('PORT'));
 
-// setup routes based off version
-routes.v1(routerV1);
-app.use('/v1', routerV1);
-
-// use error handler only in dev
-if (process.env.NODE_ENV === 'development') {
-  // only use in development
-  app.use(errorhandler());
-} else {
-  app.use(function (err, req, res, next) {
-    logger.error('error raised', err);
-    res.sendStatus(500);
-  });
-}
-
-app.listen(conf('PORT'), function () {
-  logger.info('flights api listening on port: ' + app.get('port'));
-});
+logger.info(util.format('IOM Flights API listening on %d', conf('PORT')));
