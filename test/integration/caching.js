@@ -9,7 +9,7 @@ describe('when requesting caching information', () => {
 
   beforeEach(() => {
     require('../../globals');
-    url = util.format('%s:%d', conf('HOST'), conf('PORT'));
+    url = conf('INTEGRATION_HOST');
   });
 
   it('should return response', done => {
