@@ -15,7 +15,7 @@ let cachecheck = libRequire('cachecheck');
 
 // controllers
 let caching = libRequire('controllers/caching'),
-    flights = libRequire('controllers/flights')({});
+    flights = libRequire('controllers/flights');
 
 router.get('/v1/caching', caching.index);
 
