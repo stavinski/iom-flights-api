@@ -3,10 +3,11 @@
   "version": "0.2.2",
   "private": true,
   "engines": {
-    "node": "0.12.x"
+    "node": "0.12.x",
+    "npm": "2.x"
   },
   "scripts": {
-    "start": "node --harmony app.js"
+    "start": "node --harmony --use_strict --harmony_generators app.js"
   },
   "license": "MIT",
   "repository": {
