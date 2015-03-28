@@ -54,13 +54,8 @@ module.exports = function (grunt) {
     bump: {
       options: {
         updateConfigs: ['pkg'],
-        commitFiles: ['package.json', 'CHANGELOG.md'],
+        commitFiles: ['package.json'],
         pushTo: 'origin'
-      }
-    },
-    changelog: {
-      options: {
-        repository: '<%= pkg.repository.url %>'
       }
     }
   });
@@ -72,9 +67,9 @@ module.exports = function (grunt) {
   grunt.registerTask('server:debug', ['jshint:server', 'mochacli:debug']);
   grunt.registerTask('server:release', ['mochacli:release']);
 
-  grunt.registerTask('notes:minor', ['bump-only:minor', 'changelog', 'bump-commit']);
-  grunt.registerTask('notes:major', ['bump-only:major', 'changelog', 'bump-commit']);
-  grunt.registerTask('notes', ['bump-only', 'changelog', 'bump-commit']);
+  grunt.registerTask('notes:minor', ['bump-only:minor', 'bump-commit']);
+  grunt.registerTask('notes:major', ['bump-only:major', 'bump-commit']);
+  grunt.registerTask('notes', ['bump-only', 'bump-commit']);
 
   grunt.registerTask('debug', ['support:debug', 'server:debug']);
   grunt.registerTask('release', ['debug', 'server:release']);
