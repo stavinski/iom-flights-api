@@ -4,11 +4,15 @@
 require('./globals');
 
 let util = require('util'),
+    winston = require('winston'),
     app = require('koa')(),
     koalogger = require('koa-logger'),
     router = require('koa-router')(),
     cors = require('koa-cors'),
     jsonp = require('koa-jsonp');
+
+// set logging level
+winston.level = conf('LOG_LEVEL');
 
 // middlewares
 let cachecheck = libRequire('cachecheck');
