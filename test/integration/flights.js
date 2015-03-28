@@ -9,7 +9,7 @@ describe('when retrieving flights', () => {
 
   beforeEach(() => {
     require('../../globals');
-    url = util.format('%s:%d', conf('HOST'), conf('PORT'));
+    url = conf('INTEGRATION_HOST');
   });
 
   it('should return flights available', done => {
