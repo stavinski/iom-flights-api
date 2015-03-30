@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "co": "^4.5.1",
+    "co-request": "^0.2.0",
     "koa": "^0.18.1",
     "koa-cors": "0.0.14",
     "koa-jsonp": "^0.1.2",
