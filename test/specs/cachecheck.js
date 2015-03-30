@@ -17,7 +17,7 @@ describe('when checking incoming request cache headers', () => {
               };
 
     it('should set caching meta data property to body', () => {
-      var gen = cachecheck.call(ctx, Function.prototype);
+      let gen = cachecheck.call(ctx, Function.prototype);
       gen.next();
       gen.next();
 
@@ -26,7 +26,7 @@ describe('when checking incoming request cache headers', () => {
     });
 
     it('should use correct uri for caching', () => {
-      var gen = cachecheck.call(ctx, Function.prototype);
+      let gen = cachecheck.call(ctx, Function.prototype);
       gen.next();
       gen.next();
 
@@ -46,7 +46,7 @@ describe('when checking incoming request cache headers', () => {
               };
 
     it('should not set any caching meta data', () => {
-      var gen = cachecheck.call(ctx, Function.prototype);
+      let gen = cachecheck.call(ctx, Function.prototype);
       gen.next();
       gen.next();
 

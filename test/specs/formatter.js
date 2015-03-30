@@ -1,8 +1,9 @@
 'use strict';
 
-let co = require('co'),
-    expect = require('expect.js'),
+let expect = require('expect.js'),
     _ = require('lodash');
+
+require('co-mocha');
 
 describe('when formatting flights xml', () => {
   let formatter;
@@ -17,84 +18,54 @@ describe('when formatting flights xml', () => {
     formatter = libRequire('formatter');
   });
 
-  it('should return correct number of flights', done => {
-    co(function* () {
-      try {
-        let flights = yield formatter(xmldata.good);
-        expect(flights).to.have.length(1);
-        done();
-      } catch (err) {
-        done(err);
-      }
+  it('should return correct number of flights', function* () {
+    let flights = yield formatter(xmldata.good);
+    expect(flights).to.have.length(1);
+  });
+
+  it('should have correct structure', function* () {
+    let flights = yield formatter(xmldata.good);
+    let flight = _.first(flights);
+
+    expect(flight).to.have.property('id');
+    expect(flight).to.have.property('type');
+    expect(flight).to.have.property('airport');
+    expect(flight.airport).to.have.property('name');
+    expect(flight.airport).to.have.property('fullname');
+    expect(flight).to.have.property('airline');
+    expect(flight.airline).to.have.property('code');
+    expect(flight.airline).to.have.property('name');
+    expect(flight).to.have.property('scheduled');
+    expect(flight.scheduled).to.have.property('local');
+    expect(flight.scheduled).to.have.property('utc');
+  });
+
+  it('should have correct values', function* () {
+    let flights = yield formatter(xmldata.good);
+    let flight = _.first(flights);
+
+    expect(flight).to.eql({
+      id: 'BE811',
+      type: 'flight',
+      airport: {
+        name: 'Manchester',
+        fullname: 'Manchester'
+      },
+      airline: {
+        code: 'BE',
+        name: 'Flybe'
+      },
+      scheduled: {
+        local: '2014-11-09T10:45:00',
+        utc: '2014-11-09T10:45:00.000Z'
+      },
+      status: 'Go to Gate 3'
     });
   });
 
-  it('should have correct structure', done => {
-    co(function* () {
-      try {
-        let flights = yield formatter(xmldata.good);
-        let flight = _.first(flights);
-
-        expect(flight).to.have.property('id');
-        expect(flight).to.have.property('type');
-        expect(flight).to.have.property('airport');
-        expect(flight.airport).to.have.property('name');
-        expect(flight.airport).to.have.property('fullname');
-        expect(flight).to.have.property('airline');
-        expect(flight.airline).to.have.property('code');
-        expect(flight.airline).to.have.property('name');
-        expect(flight).to.have.property('scheduled');
-        //expect(flight.scheduled).to.have.property('local');
-        //expect(flight.scheduled).to.have.property('utc');
-
-        done();
-      } catch (err) {
-        done(err);
-      }
-    });
-  });
-
-  it('should have correct values', done => {
-    co(function* () {
-      try {
-        let flights = yield formatter(xmldata.good);
-        let flight = _.first(flights);
-
-        expect(flight).to.eql({
-          id: 'BE811',
-          type: 'flight',
-          airport: {
-            name: 'Manchester',
-            fullname: 'Manchester'
-          },
-          airline: {
-            code: 'BE',
-            name: 'Flybe'
-          },
-          scheduled: {
-            local: '2014-11-09T10:45:00',
-            utc: '2014-11-09T10:45:00.000Z'
-          },
-          status: 'Go to Gate 3'
-        });
-
-        done();
-      } catch (err) {
-        done(err);
-      }
-    });
-  });
-
-  it('should handle bad data', done => {
-    co(function* () {
-      try {
-        let flights = yield formatter(xmldata.bad);
-        expect(flights).to.be.empty();
-        done();
-      } catch (err) {
-        done(err);
-      }
-    });
+  it('should handle bad data', function* () {
+    let flights = yield formatter(xmldata.bad);
+    expect(flights).to.be.empty();
   });
 
 });

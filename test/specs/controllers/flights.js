@@ -16,7 +16,7 @@ let ctx = {
 
 describe('when retrieving available flights', () => {
   it('should return correct response', () => {
-    var gen = controller.index.call(ctx, Function.prototype);
+    let gen = controller.index.call(ctx, Function.prototype);
     gen.next();
     gen.next();
 
@@ -66,7 +66,7 @@ function flightSpecification(direction) {
     });
 
     it('should use the if-none-match header', () => {
-      var gen = controller[direction].call(ctx, Function.prototype);
+      let gen = controller[direction].call(ctx, Function.prototype);
       gen.next();
       gen.next(response);
 
@@ -74,7 +74,7 @@ function flightSpecification(direction) {
     });
 
     it('should use the etag header', () => {
-      var gen = controller[direction].call(ctx, Function.prototype);
+      let gen = controller[direction].call(ctx, Function.prototype);
       gen.next();
       gen.next(response);
 
@@ -83,7 +83,7 @@ function flightSpecification(direction) {
 
     describe('given requester returns not modified status', () => {
       it('should return not modified status to the client', () => {
-        var gen = controller[direction].call(ctx, Function.prototype);
+        let gen = controller[direction].call(ctx, Function.prototype);
         gen.next();
         gen.next(response);
 
@@ -95,7 +95,7 @@ function flightSpecification(direction) {
       beforeEach(() => response.status = 500);
 
       it('should throw a bad status', () => {
-        var gen = controller[direction].call(ctx, Function.prototype);
+        let gen = controller[direction].call(ctx, Function.prototype);
         gen.next();
         gen.next(response);
 
@@ -107,7 +107,7 @@ function flightSpecification(direction) {
       beforeEach(() => response.status = 200);
 
       it('should return updated to the client', () => {
-        var gen = controller[direction].call(ctx, Function.prototype);
+        let gen = controller[direction].call(ctx, Function.prototype);
         gen.next();
         gen.next(response);
         gen.next(flights);
@@ -116,7 +116,7 @@ function flightSpecification(direction) {
       });
 
       it('should return flights to the client', () => {
-        var gen = controller[direction].call(ctx, Function.prototype);
+        let gen = controller[direction].call(ctx, Function.prototype);
         gen.next();
         gen.next(response);
         gen.next(flights);
