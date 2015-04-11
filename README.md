@@ -197,3 +197,11 @@ flight | status | The current status of the flight
   }]
 }
 ```
+
+## Setup
+
+Due to the dates being sent from the data feed in a non-standard format in cannot infer the timezone therefore you will need to specify the timezone as GB, this can be set on heroku using:
+
+```heroku config:add TZ="GB"```
+
+Or by setting a env variable if hosted outside of heroku.
