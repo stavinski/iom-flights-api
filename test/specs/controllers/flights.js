@@ -29,7 +29,7 @@ function flightSpecification(direction) {
 
   describe('when retrieving ' + direction, () => {
     let response = {
-      updated: 'Sat, 28 Mar 2015 13:45:19 GMT',
+      updated: 'Sat, 28 Apr 2015 13:45:19 GMT',
       status: 304,
       etag: 'abc123',
       body: '<FLIGHTS></FLIGHTS>'
@@ -46,16 +46,16 @@ function flightSpecification(direction) {
         "code":"BE",
         "name":"Flybe"
       },"scheduled": {
-        "local":"2015-03-28T09:50:00",
-        "utc":"2015-03-28T09:50:00.000Z"
+        "local":"2015-04-28T09:50:00",
+        "utc":"2015-04-28T09:50:00.000Z"
       },
       "expected": {
-        "local":"2015-03-28T13:05:00",
-        "utc":"2015-03-28T13:05:00.000Z"
+        "local":"2015-04-28T13:05:00",
+        "utc":"2015-04-28T13:05:00.000Z"
       },
       "actual": {
-        "local":"2015-03-28T13:15:00",
-        "utc":"2015-03-28T13:15:00.000Z"
+        "local":"2015-04-28T13:15:00",
+        "utc":"2015-04-28T13:15:00.000Z"
       },
       "status":"Departed 13:15"
     }];
@@ -112,7 +112,12 @@ function flightSpecification(direction) {
         gen.next(response);
         gen.next(flights);
 
-        expect(ctx.body.updated).to.eql(new Date('Sat, 28 Mar 2015 13:45:19 GMT'));
+        let expected = {
+            utc: '2015-04-28T13:45:19+00:00',
+            local: '2015-04-28T14:45:19+01:00'
+        };
+
+        expect(ctx.body.updated).to.eql(expected);
       });
 
       it('should return flights to the client', () => {

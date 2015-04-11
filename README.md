@@ -78,8 +78,10 @@ Returns the flight arrivals to the Isle of Man airport.
 
 Object | Property | Description
 --- | --- | ---
-root | updated | The utc date & time of when the arrivals flight data was updated from the data feed
+root | updated | details about when the data was updated
 root | flights | An array of flights that match the supplied request
+updated | utc | The utc date & time of when the data was updated
+updated | local | The local date & time of when the data was updated
 flight | id | The id of the flight this is the flight code
 flight | type | Reference type of this resource (always flight)
 flight.airport | name | Name of the airport the flight originated from
@@ -98,7 +100,10 @@ flight | status | The current status of the flight
 
 ```json
 {
-  "updated": "2014-11-26T19:30:00.000Z",
+  "updated": {
+    utc: "2014-11-26T19:30:0+00:00",
+    local: utc: "2014-11-26T19:30:0+00:00"
+  },
   "flights":[{
     "id":"EZY855",
     "type":"flight",
@@ -111,16 +116,16 @@ flight | status | The current status of the flight
       "name":"easyjet"
     },
     "scheduled":{
-      "local":"2014-11-26T19:25:00",
-      "utc":"2014-11-26T19:25:00.000Z"
+      "local":"2014-11-26T19:25:00+00:00",
+      "utc":"2014-11-26T19:25:00+00:00"
     },
     "expected":{
-      "local":"2014-11-26T19:15:00",
-      "utc":"2014-11-26T19:15:00.000Z"
+      "local":"2014-11-26T19:15:00+00:00",
+      "utc":"2014-11-26T19:15:00+00:00"
       },
     "actual":{
-      "local":"2014-11-26T19:17:00",
-      "utc":"2014-11-26T19:17:00.000Z"
+      "local":"2014-11-26T19:17:00+00:00",
+      "utc":"2014-11-26T19:17:00+00:00"
     },
     "status":"Landed 19:17"
   }]
@@ -139,8 +144,10 @@ Returns the flight departures from the Isle of Man airport.
 
 Object | Property | Description
 --- | --- | ---
-root | updated | The utc date & time of when the departures flight data was updated from the data feed
+root | updated | details about when the data was updated
 root | flights | An array of flights that match the supplied request
+updated | utc | The utc date & time of when the data was updated
+updated | local | The local date & time of when the data was updated
 flight | id | The id of the flight this is the flight code
 flight | type | Reference type of this resource (always flight)
 flight.airport | name | Name of the airport the flight is destined to
@@ -159,7 +166,10 @@ flight | status | The current status of the flight
 
 ```json
 {
-  "updated": "2014-11-26T19:30:00.000Z",
+  "updated": {
+    utc: "2014-11-26T19:30:0+00:00",
+    local: utc: "2014-11-26T19:30:0+00:00"
+  },
   "flights":[{
     "id":"EZY855",
     "type":"flight",
@@ -172,18 +182,26 @@ flight | status | The current status of the flight
       "name":"easyjet"
     },
     "scheduled":{
-      "local":"2014-11-26T19:25:00",
-      "utc":"2014-11-26T19:25:00.000Z"
+      "local":"2014-11-26T19:25:00+00:00",
+      "utc":"2014-11-26T19:25:00+00:00"
     },
     "expected":{
-      "local":"2014-11-26T19:15:00",
-      "utc":"2014-11-26T19:15:00.000Z"
+      "local":"2014-11-26T19:15:00+00:00",
+      "utc":"2014-11-26T19:15:00+00:00"
     },
     "actual":{
-      "local":"2014-11-26T19:17:00",
-      "utc":"2014-11-26T19:17:00.000Z"
+      "local":"2014-11-26T19:17:00+00:00",
+      "utc":"2014-11-26T19:17:00+00:00"
     },
     "status":"Landed 19:17"
   }]
 }
 ```
+
+## Setup
+
+Due to the dates being sent from the data feed in a non-standard format in cannot infer the timezone therefore you will need to specify the timezone as GB, this can be set on heroku using:
+
+```heroku config:add TZ="GB"```
+
+Or by setting a env variable if hosted outside of heroku.
