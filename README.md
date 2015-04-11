@@ -102,7 +102,7 @@ flight | status | The current status of the flight
 {
   "updated": {
     utc: "2014-11-26T19:30:0+00:00",
-    local: utc: "2014-11-26T19:30:0+00:00"
+    local: "2014-11-26T19:30:0+00:00"
   },
   "flights":[{
     "id":"EZY855",
@@ -168,7 +168,7 @@ flight | status | The current status of the flight
 {
   "updated": {
     utc: "2014-11-26T19:30:0+00:00",
-    local: utc: "2014-11-26T19:30:0+00:00"
+    local: "2014-11-26T19:30:0+00:00"
   },
   "flights":[{
     "id":"EZY855",
