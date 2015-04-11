@@ -1,6 +1,6 @@
 {
   "name": "iom-flights-api",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "private": true,
   "engines": {
     "node": "0.12.x",
@@ -41,6 +41,7 @@
     "koa-logger": "^1.2.2",
     "koa-router": "^4.2.0",
     "lodash": "^3.6.0",
+    "moment-timezone": "^0.3.1",
     "nconf": "^0.6.9",
     "promise": "^6.0.1",
     "request": "^2.54.0",
