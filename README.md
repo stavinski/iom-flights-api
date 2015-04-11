@@ -78,8 +78,10 @@ Returns the flight arrivals to the Isle of Man airport.
 
 Object | Property | Description
 --- | --- | ---
-root | updated | The utc date & time of when the arrivals flight data was updated from the data feed
+root | updated | details about when the data was updated
 root | flights | An array of flights that match the supplied request
+updated | utc | The utc date & time of when the data was updated
+updated | local | The local date & time of when the data was updated
 flight | id | The id of the flight this is the flight code
 flight | type | Reference type of this resource (always flight)
 flight.airport | name | Name of the airport the flight originated from
@@ -98,7 +100,10 @@ flight | status | The current status of the flight
 
 ```json
 {
-  "updated": "2014-11-26T19:30:00.000Z",
+  "updated": {
+    utc: "2014-11-26T19:30:0+00:00",
+    local: utc: "2014-11-26T19:30:0+00:00"
+  },
   "flights":[{
     "id":"EZY855",
     "type":"flight",
@@ -139,8 +144,10 @@ Returns the flight departures from the Isle of Man airport.
 
 Object | Property | Description
 --- | --- | ---
-root | updated | The utc date & time of when the departures flight data was updated from the data feed
+root | updated | details about when the data was updated
 root | flights | An array of flights that match the supplied request
+updated | utc | The utc date & time of when the data was updated
+updated | local | The local date & time of when the data was updated
 flight | id | The id of the flight this is the flight code
 flight | type | Reference type of this resource (always flight)
 flight.airport | name | Name of the airport the flight is destined to
@@ -159,7 +166,10 @@ flight | status | The current status of the flight
 
 ```json
 {
-  "updated": "2014-11-26T19:30:00.000Z",
+  "updated": {
+    utc: "2014-11-26T19:30:0+00:00",
+    local: utc: "2014-11-26T19:30:0+00:00"
+  },
   "flights":[{
     "id":"EZY855",
     "type":"flight",

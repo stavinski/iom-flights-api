@@ -8,7 +8,7 @@ require('co-mocha');
 describe('when formatting flights xml', () => {
   let formatter;
   let xmldata = {
-    good: '<FLIGHTS><UPDATED_AT>09 Nov 2014 10:03</UPDATED_AT><FLIGHT><FLT>BE811</FLT><PORT>Manchester</PORT><VIA1/><VIA2/><FULL_PORT>Manchester</FULL_PORT><AIRLINE_CODE>BE</AIRLINE_CODE><AIRLINE_NAME>Flybe</AIRLINE_NAME><SCHED_DATETIME>09 Nov 2014 10:45</SCHED_DATETIME><SCHED_TIME>10:45</SCHED_TIME><EXPECTED_DATETIME/><EXPECTED_TIME/><ACTUAL_DATETIME/><ACTUAL_TIME/><STATUS>Go to Gate 3</STATUS><_order>11/9/2014 10:45:00 AM</_order></FLIGHT></FLIGHTS>',
+    good: '<FLIGHTS><UPDATED_AT>11 Apr 2014 10:03</UPDATED_AT><FLIGHT><FLT>BE811</FLT><PORT>Manchester</PORT><VIA1/><VIA2/><FULL_PORT>Manchester</FULL_PORT><AIRLINE_CODE>BE</AIRLINE_CODE><AIRLINE_NAME>Flybe</AIRLINE_NAME><SCHED_DATETIME>11 Apr 2015 10:45</SCHED_DATETIME><SCHED_TIME>10:45</SCHED_TIME><EXPECTED_DATETIME/><EXPECTED_TIME/><ACTUAL_DATETIME/><ACTUAL_TIME/><STATUS>Go to Gate 3</STATUS><_order>11/9/2014 10:45:00 AM</_order></FLIGHT></FLIGHTS>',
     bad: '<FLIGHTS><UPDATED_AT>08 Nov 2014 21:55</UPDATED_AT>'
   };
 
@@ -56,8 +56,8 @@ describe('when formatting flights xml', () => {
         name: 'Flybe'
       },
       scheduled: {
-        local: '2014-11-09T10:45:00',
-        utc: '2014-11-09T10:45:00.000Z'
+        local: '2015-04-11T10:45:00+01:00',
+        utc: '2015-04-11T09:45:00+00:00'
       },
       status: 'Go to Gate 3'
     });
