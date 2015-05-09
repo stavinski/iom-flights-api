@@ -3,6 +3,9 @@
 // load globals
 require('./globals');
 
+// load new relic
+require('newrelic');
+
 let util = require('util'),
     winston = require('winston'),
     app = require('koa')(),
